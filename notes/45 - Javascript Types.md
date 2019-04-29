@@ -2,7 +2,8 @@
 
 ## Primitive types:
 
-def: Data that only represente a single value. ex n = 5, in memory the value of n is number
+def: Data that only represente a single value. They are unmuttable
+ex n = 5, in memory the value of n is number
 
 - number
 - boolean
