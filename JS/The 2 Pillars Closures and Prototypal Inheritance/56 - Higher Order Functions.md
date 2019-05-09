@@ -54,16 +54,15 @@ function authenticate(verify) {
   for (let i = 0; i < verify; i++) {
     array.push(i);
   }
-  return true;
+  return giveAccessTo(person);
 }
 
 function letPersonLogin(person, fn) {
   if (person.level === "admin") {
-    fn(2000);
+    return fn(person);
   } else if (person.level === "user") {
-    fn(10000);
+    return fn(person);
   }
-  return giveAccessTo(person);
 }
 
 // function letAdminLogin(user) {
@@ -85,4 +84,32 @@ function letPersonLogin(person, fn) {
 //   }
 //   return giveAccessTo(user);
 // }
+```
+
+Exercise:
+
+```JS
+// Try.
+const multiplyBy = (n, m) => n* m
+const multiplyByTwo = (n, fn) => fn(2, n)
+const multiplyByTen = (n, fn) => fn(10, n)
+
+// Draft
+const multiplyBy = function (n) {
+  return function (m) {
+    return n * m
+  }
+}
+const multiplyByTwo = multiplyBy(2)
+const multiplyByTen = multiplyBy(10)
+console.log(multiplyByTwo(5))
+console.log(multiplyByTen(7))
+
+// Final Result
+const multiplyBy = (n) => (m) => n * m
+multiplyBy(4)(6)
+// const multiplyByTwo = multiplyBy(2)
+// const multiplyByTen = multiplyBy(10)
+// console.log(multiplyByTwo(5))
+// console.log(multiplyByTen(7))
 ```
