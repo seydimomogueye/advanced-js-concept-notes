@@ -1,4 +1,4 @@
-# 68 - Prototypal Inheritance 2
+# 69 - Prototypal Inheritance 3
 
 ```js
 const dragron = {
@@ -35,3 +35,11 @@ for (let prop in lizard) {
 
 - The advantage: we have property that point to the same place of memory. => hasOwnProperty and haProperty
 - o.**proto**.**proto** //=> null // null pointer, pointing to null.
+
+# 70 - Prototypal Inheritance 4
+
+```js
+function multiplyBy5() {}
+multiplyBy5.__proto__ === Function.prototype; //=> true
+const o = {};
+```
