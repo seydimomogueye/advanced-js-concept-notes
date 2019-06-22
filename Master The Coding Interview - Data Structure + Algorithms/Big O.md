@@ -6,43 +6,54 @@
 2. Scalable. (Big O)
 
 ```js
-const nemo = ['nemo'];
+const nemo = ["nemo"];
 
 function findNemo1(array) {
   for (let i = 0; i < array.length; i++) {
-    if (array[i] === 'nemo') {
-      console.log('Found NEMO!');
+    if (array[i] === "nemo") {
+      console.log("Found NEMO!");
     }
   }
 }
 
 findNemo1(nemo);
-````
+```
 
 Resources:
-- [For loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
 
+- [For loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
 
 ## Big O scalability.
 
 ```js
-const fish = ['dory', 'bruce', 'marlin', 'nemo'];
-const nemo = ['nemo'];
-const everyone = ['dory', 'bruce', 'marlin', 'nemo', 'gill', 'bloat', 'nigel', 'squirt', 'darla', 'hank'];
-const large = new Array(10).fill('nemo');
+const fish = ["dory", "bruce", "marlin", "nemo"];
+const nemo = ["nemo"];
+const everyone = [
+  "dory",
+  "bruce",
+  "marlin",
+  "nemo",
+  "gill",
+  "bloat",
+  "nigel",
+  "squirt",
+  "darla",
+  "hank"
+];
+const large = new Array(10).fill("nemo");
 
 function findNemo2(fish) {
   let t0 = performance.now();
   for (let i = 0; i < fish.length; i++) {
-    if (fish[i] === 'nemo') {
-      console.log('Found NEMO!');
+    if (fish[i] === "nemo") {
+      console.log("Found NEMO!");
     }
   }
   let t1 = performance.now();
   console.log("Call to find Nemo took " + (t1 - t0) + " milliseconds.");
 }
 
-findNemo2(everyone)
+findNemo2(everyone);
 ```
 
 Who's code is better ?
@@ -52,8 +63,9 @@ so how to know which code is better ?
 Bio O is the language used to know which algorith is the longest to run.
 
 ## O(n)
+
 ```js
-findNemo2(elements) 
+findNemo2(elements);
 // The number of operations increase with the number of elements
 // O(n) --> Linear time.
 // n == element number.
@@ -63,37 +75,36 @@ findNemo2(elements)
 // |   x
 // | x
 // |_ _ _ _ _ _ _ _ _> number of elements
-
 ```
 
 ## O(1)
 
 ```js
 function compressFirstBoxe(boxes) {
-	console.log(boxes[0]);
+  console.log(boxes[0]);
 }
 // How many steps or operation the functions takes ? n, but how many element the function takes,
-// it will return one operation. 
-// O(1) --> It's a Constant Time 
+// it will return one operation.
+// O(1) --> It's a Constant Time
 
 // number of operations
 // /\
-// |.    
-// |   
+// |.
+// |
 // | x x x x
 // |_ _ _ _ _ _ _ _ _> number of elements
 ```
 
 ```js
 function logFirstTwoBoxes(boxes) {
-	console.log(boxes[0]); // O(1)
-	console.log(boxes[1]); // O(1)
+  console.log(boxes[0]); // O(1)
+  console.log(boxes[1]); // O(1)
 }
-logFirstTwoBoxes(boxes) // O(2)
+logFirstTwoBoxes(boxes); // O(2)
 // number of operations
 //   /\
-// 3 |    
-// 2 | x x x x   
+// 3 |
+// 2 | x x x x
 // 1 |
 // 0 |_ _ _ _ _ _ _ _ _> number of elements
 ```
@@ -103,7 +114,8 @@ function funChallenge(input) {
   let a = 10; // O(1)
   a = 50 + 3; // O(1)
 
-  for (let i = 0; i < input.length; i++) { // O(n)
+  for (let i = 0; i < input.length; i++) {
+    // O(n)
     anotherFunction(); // O(n)
     let stranger = true; // O(n)
     a++; // O(n)
@@ -113,7 +125,8 @@ function funChallenge(input) {
 // O(3 + 4n) => O(4(1+n))
 ```
 
-- What is the difference between big oh, big omega and big theta notations?
+- What is the difference between big O, big omega and big theta notations?
+
 ```
 Let 𝑓,𝑔 be two arbitrary functions.
 
@@ -143,18 +156,19 @@ function anotherFunChallenge(input) {
   let a = 5; // O(1)
   let b = 10; // O(1)
   let c = 50; // O(1)
-  for (let i = 0; i < input; i++) { // O(n)
+  for (let i = 0; i < input; i++) {
+    // O(n)
     let x = i + 1; // O(n)
     let y = i + 2; // O(n)
     let z = i + 3; // O(n)
-
   }
-  for (let j = 0; j < input; j++) { // O(n)
+  for (let j = 0; j < input; j++) {
+    // O(n)
     let p = j * 2; // O(n)
     let q = j * 2; // O(n)
   }
   let whoAmI = "I don't know"; // O(1)
-} 
+}
 // O(4 + (n + n + n + n) + (n + n + n))
 // O(4 + 4n + 3n)
 // O(4 + 7n)
@@ -162,7 +176,7 @@ function anotherFunChallenge(input) {
 
 ## Simplify Big O.
 
-In interview, we have to give answer from Big-O complexity charts. 
+In interview, we have to give answer from Big-O complexity charts.
 
 ex: O(4 + 7n) ==> O(n)
 ex: O(4(1+n)) ==> O(n)
@@ -171,47 +185,50 @@ so, we have to follow 4 rules:
 Rule 1: Worst case. (Big O always talk about this case.)
 
 Rule 2: Remove constans
+
 ```js
 function printFirstItemThenFirstHalfThenSayHi100Times(items) {
-    console.log(items[0]); // O(1)
+  console.log(items[0]); // O(1)
 
-    var middleIndex = Math.floor(items.length / 2); // O(1)
-    var index = 0; // O(1)
+  var middleIndex = Math.floor(items.length / 2); // O(1)
+  var index = 0; // O(1)
 
-    while (index < middleIndex) { // O(n/2)
-        console.log(items[index]);
-        index++;
-    }
+  while (index < middleIndex) {
+    // O(n/2)
+    console.log(items[index]);
+    index++;
+  }
 
-    for (var i = 0; i < 100; i++) { // O(n) where n = 100 => 100
-        console.log('hi');
-    }
+  for (var i = 0; i < 100; i++) {
+    // O(n) where n = 100 => 100
+    console.log("hi");
+  }
 }
 // BIG O = O(2 + n/2 + 100)
 // => BIG O = O(n/2 + 102)  remember we have to express big o with something in thc cheat-cheet
 // BIG O = O(n/2 + 1). // replace 102 to 1
 // BIG O = O(n/2 + 1). // We only interested by when it's scales, getting larger and larger, so we don't care about 100 or 1 for sample if n = 1 million it's neglectable to add 100. Divided by two has a decreased significant effect => O(n + 1), and because 1 is insignificant => O(n)
 
-
 function compressBoxesTwices(boxes) {
-	boxes.forEach(function(boxes) {
-		console.log(boxes)
-	});
+  boxes.forEach(function(boxes) {
+    console.log(boxes);
+  });
 
-	boxes.forEach(function(boxes) {
-		console.log(boxes)
-	})
+  boxes.forEach(function(boxes) {
+    console.log(boxes);
+  });
 }
 // number of operations
 //   /\	   x
-// 3 |	 x 
-// 2 | x  
-// 1 | 
+// 3 |	 x
+// 2 | x
+// 1 |
 // 0 |_ _ _ _ _ _ _ _ _> number of elements
 //=> O(2n) => in interview we drop the constant => O(n)
 ```
 
 Rule 3: Different terms for inputs
+
 ```js
 // 1. function compressBoxesTwice(boxes) {
 	boxes.forEach(function(boxes, boxes2) { // => depend on boxes length
@@ -227,6 +244,7 @@ Rule 3: Different terms for inputs
 ```
 
 ## O(n^2)
+
 ```js
 const boxes = ['a', 'b', 'c', 'd', 'e'];
 function logAllPairsOfArray(array) {
@@ -247,9 +265,9 @@ logAllPairsOfArray(boxes)
 // 6 |
 // 5 |
 // 4 |  x(4, 2)
-// 3 |	  
-// 2 |  
-// 1 |   
+// 3 |
+// 2 |
+// 1 |
 // 0 |_ _ _ _ _ _ _ _ _> number of elements
 
 / 1. function compressBoxesTwice(boxes) {
@@ -265,3 +283,80 @@ logAllPairsOfArray(boxes)
 ```
 
 Rule 4: Drop Non Dominant.
+
+```js
+function printAllNumbersThenAllPairSums(numbers) {
+  console.log("these are the numbers:");
+  numbers.forEach(function(number) {
+    console.log(number);
+  });
+
+  console.log("and these are their sums:");
+  numbers.forEach(function(firstNumber) {
+    numbers.forEach(function(secondNumber) {
+      console.log(firstNumber + secondNumber);
+    });
+  });
+}
+
+printAllNumbersThenAllPairSums([1, 2, 3, 4, 5]);
+// 1. Big O: n + n^2
+// 2. n^2 is the dominant
+// 3. Big O: n^2
+```
+
+## What does't this all mean ?
+
+- scalable mean we worry about large inputs.
+- thinking long term when writing code, not just about 5 or 100, but about 10 millions.
+- Data structures + Algorithms = Programs
+
+## O(n!) known as "Oh no!"
+
+example:
+
+```java
+void nFacRuntimeFunc(int n) {
+  for(int i=0; i<n; i++) {
+    nFacRuntimeFunc(n-1);
+  }
+}
+```
+
+## 40 - Pillars Of Programming.
+
+1. Readable
+2. Scalable
+   2.1. Time & Speed: how many operation does it cost ?
+   2.2. Memory
+
+Which code is best can be answer with 3 pillars:
+
+1. Readable / Maintainable
+2. Memory (Space complexity)
+3. Speed (Time complexity)
+
+take care of resources makes you a better engineer.
+
+## 41 Space Complexity
+
+```js
+//#5 Space complexity O(1)
+// because of let i
+function boooo(n) {
+  for (let i = 0; i < n; i++) {
+    console.log("booooo");
+  }
+}
+
+// #6 Space complexity O(n)
+function arrayOfHiNTimes(n) {
+  var hiArray = [];
+  for (let i = 0; i < n; i++) {
+    hiArray[i] = "hi";
+  }
+  return hiArray;
+}
+
+arrayOfHiNTimes(6);
+```
